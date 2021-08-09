@@ -1,0 +1,62 @@
+<ion-view view-title="{{order.order.SupplierName}} --> {{order.order.CustomerName}} ({{formatDate(order.order.OrderDate) | date: 'dd/MM/yyyy'}})">
+  <ion-content class="padding">
+    <!--img ng-src="{{order.face}}" style="width: 64px; height: 64px"-->
+		<p>Order Id: {{order.order.Id}} </p>
+    <p ng-show="order.order.Canceled" style="color:red">Cancelled</p>
+    <p>Date: {{formatDate(order.order.OrderDate) | date: 'dd/MM/yyyy'}}</p>
+    <p>Supplier: {{order.order.SupplierName}}</p>
+    <p>Contact Person: {{order.order.UpdatedBy}}</p>
+    <p>Customer: {{order.order.CustomerName}}</p>
+    <p>Transporter: {{order.order.TransporterName}}</p>
+    <p>State: {{order.order.StateName}}</p>
+    <p>Order Name: {{order.order.OrderName}}</p>
+    <p>Currency: {{order.order.CurrencyName}}</p>
+    <p>Total Value: {{order.order.Price | number:2}}</p>
+    <p>Commission: {{order.order.Commision | number:2}}</p>
+    <p>Additional Discount: {{(order.order.Discount*100) | number:2}}%</p>
+    <p>Commercial Discount: {{(order.order.CommercialDiscount*100) | number:2}}%</p>
+    <p>Special Charges: {{order.order.SpecialCharges | number:2}}</p>
+    <p>Special Charges Description: {{order.order.SpecialChargesDescreption}}</p>
+    <p>Shipment Date: {{formatDate(order.order.UpdatedOn) | date: 'dd/MM/yyyy'}}</p>
+    <p>Payment Date: {{formatDate(order.order.RequiredDate) | date: 'dd/MM/yyyy'}}</p>
+    <p>Payment Type: {{order.order.PaymentTypeName}}</p>
+    <p>Days to pay: {{ order.order.RequiredDate | amDifference : order.order.OrderDate : 'days' }} days</p>
+    <p>Net Weight: {{order.order.NetWeight}}</p>
+    <p>Gross Weight: {{order.order.GrossWeight}}</p>
+    <p>Notes: {{order.order.OrderName}}</p>
+    
+
+    <div ng-bind-html="order.order.TextField1"></div>
+    <div ng-bind-html="order.order.TextField2"></div>
+    <div ng-bind-html="order.order.TextField3"></div>
+    <div>
+      <h3>Order Details</h3>
+      <div class="row header">
+        <div class="col">Product Id</div>
+        <div class="col">Product Name</div>
+        <div class="col">Composition</div>
+        <div class="col">Quantity</div>
+        <div class="col">Default Packing</div>
+        <div class="col">Quantity</div>
+        <div class="col">Alternative Packing</div>
+        <div class="col">Unit Price</div>
+        <div class="col">Commission</div>
+        <div class="col">Discount Ratio</div>
+        <div class="col">Value</div>
+      </div> 
+      <div class="row" ng-repeat="detail in order.orderDetails" >
+        <div class="col">{{detail.ProductId}}</div>
+        <div class="col">{{detail.ProductName}}</div>
+        <div class="col">{{detail.Multitude}} x {{detail.SmallerQuantity}}</div>
+        <div class="col">{{detail.Units | number:2}}</div>
+        <div class="col">{{detail.DefaultQuantity}}</div>
+        <div class="col">{{(detail.Units / detail.RatioToParent) | number:2}}</div>
+        <div class="col">{{detail.QuantityName}}</div>
+        <div class="col">{{detail.UnitPrice | number:2}}</div>
+        <div class="col">{{detail.Commision | number:2}}</div>
+        <div class="col">{{detail.DiscountRatio | number:2}}</div>
+        <div class="col">{{detail.Commision | number:2}}</div>
+      </div>      
+    </div>
+  </ion-content>
+</ion-view>

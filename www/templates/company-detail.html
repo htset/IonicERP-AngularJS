@@ -1,0 +1,38 @@
+<ion-view view-title="{{company.company.BrandName}}">
+  <ion-content class="padding">
+		<h2>{{company.company.BrandName}} </h2>
+    <p>Official Name: {{company.company.CompanyName}}</p>
+    <p>Active: {{(company.company.CompanyActive==1)?'True':'False'}}</p>
+    <p>Type: {{company.company.CompanyType}}</p>
+    <p>VAT: {{company.company.VatNo}}</p>
+    <p>Credit Limit (Expired): {{company.company.CreditLimitExpired}}</p>
+    <p>Credit Limit (Open): {{company.company.CreditLimitOpen}}</p>
+    <h3>Address Info</h3>
+    <p>Address: {{company.defaultAddress.Street}}</p>
+    <p>Zip code: {{company.defaultAddress.ZipCode}}</p>
+    <p>City: {{company.defaultAddress.City}}</p>
+    <p>Region: {{company.defaultAddress.Region}}</p>
+    <p>Country: {{company.defaultAddress.Country}}</p>
+    <p>Phone 1: {{company.defaultAddress.Phone1}}</p>
+    <p>Phone 2: {{company.defaultAddress.Phone2}}</p>
+    <p>Mobile Phone 1: {{company.defaultAddress.MobilePhone1}}</p>
+    <p>Mobile Phone 2: {{company.defaultAddress.MobilePhone2}}</p>
+    <p>Fax 1: {{company.defaultAddress.Fax1}}</p>
+    <p>Fax 2: {{company.defaultAddress.Fax2}}</p>
+    <p>Email 1: {{company.defaultAddress.Email1}}</p>
+    <p>Email 2: {{company.defaultAddress.Email2}}</p>
+    <p>Website: {{company.defaultAddress.Website}}</p>
+
+    <h3>Contacts</h3>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="contact in company.contacts" type="item-text-wrap" href="#/tab/contacts/{{contact.Id}}">
+        <!--img ng-src="{{product.face}}"-->
+        <h2>{{contact.FirstName}} {{contact.LastName}} </h2>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+      </ion-item>
+    </ion-list>
+    
+    
+  </ion-content>
+</ion-view>

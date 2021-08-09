@@ -1,0 +1,20 @@
+<ion-view view-title="Products Menu">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-click="openModal('suppliers')">
+        <h2>Suppliers</h2>
+        <div ng-repeat="item in selectedSuppliers">{{item.name}} </div>
+      </ion-item>
+      <ion-item ng-click="openModal('categories')">
+        <h2>Categories</h2>
+        <div ng-repeat="item in selectedCategories">{{item.name}} </div>
+      </ion-item>
+      <ion-item ng-click="openModal('subcategories')">
+        <h2>Subcategories</h2>
+        <div ng-repeat="item in selectedSubcategories">{{item.name}} </div>
+      </ion-item>
+    </ion-list>
+    <button class="button button-full button-positive" ng-click="sendQuery()">Search</button>
+    <button class="button button-full button-stable" ng-click="clearAll()">Clear Selections</button>
+  </ion-content>
+</ion-view>

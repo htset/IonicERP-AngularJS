@@ -1,0 +1,62 @@
+<ion-view view-title="{{invoice.invoice.SupplierName}} --> {{invoice.invoice.CustomerName}} ({{formatDate(invoice.invoice.InvoiceDate) | date: 'dd/MM/yyyy'}})">
+  <ion-content class="padding">
+    <!--img ng-src="{{invoice.face}}" style="width: 64px; height: 64px"-->
+		<h2>Order Conf. Id: {{invoice.invoice.Id}} </h2>
+    <p ng-show="invoice.invoice.Canceled" style="color:red">Cancelled</p>
+    <p>Date: {{formatDate(invoice.invoice.InvoiceDate) | date: 'dd/MM/yyyy'}}</p>
+    <p>Supplier: {{invoice.invoice.SupplierName}}</p>
+    <p>Contact Person: {{invoice.invoice.UpdatedBy}}</p>
+    <p>Customer: {{invoice.invoice.CustomerName}}</p>
+    <p>Transporter: {{invoice.invoice.TransporterName}}</p>
+    <p>State: {{invoice.invoice.StateName}}</p>
+    <p>Order Conf. Name: {{invoice.invoice.InvoiceName}}</p>
+    <p>Currency: {{invoice.invoice.CurrencyName}}</p>
+    <p>Total Value: {{invoice.invoice.Price | number:2}}</p>
+    <p>Commission: {{invoice.invoice.Commision | number:2}}</p>
+    <p>Additional Discount: {{(invoice.invoice.Discount*100) | number:2}}%</p>
+    <p>Commercial Discount: {{(invoice.invoice.CommercialDiscount*100) | number:2}}%</p>
+    <p>Special Charges: {{invoice.invoice.SpecialCharges | number:2}}</p>
+    <p>Special Charges Description: {{invoice.invoice.SpecialChargesDescreption}}</p>
+    <p>Shipment Date: {{formatDate(invoice.invoice.UpdatedOn) | date: 'dd/MM/yyyy'}}</p>
+    <p>Payment Date: {{formatDate(invoice.invoice.RequiredDate) | date: 'dd/MM/yyyy'}}</p>
+    <p>Payment Type: {{invoice.invoice.PaymentTypeName}}</p>
+    <p>Days to pay: {{ invoice.invoice.RequiredDate | amDifference : invoice.invoice.InvoiceDate : 'days' }} days</p>
+    <p>Net Weight: {{invoice.invoice.NetWeight}}</p>
+    <p>Gross Weight: {{invoice.invoice.GrossWeight}}</p>
+    <p>Notes: {{invoice.invoice.InvoiceName}}</p>
+    
+
+    <div ng-bind-html="invoice.invoice.TextField1"></div>
+    <div ng-bind-html="invoice.invoice.TextField2"></div>
+    <div ng-bind-html="invoice.invoice.TextField3"></div>
+    <div>
+      <h3>Order Confirmation Details</h3>
+      <div class="row header">
+        <div class="col">Product Id</div>
+        <div class="col">Product Name</div>
+        <div class="col">Composition</div>
+        <div class="col">Quantity</div>
+        <div class="col">Default Packing</div>
+        <div class="col">Quantity</div>
+        <div class="col">Alternative Packing</div>
+        <div class="col">Unit Price</div>
+        <div class="col">Commission</div>
+        <div class="col">Discount Ratio</div>
+        <div class="col">Value</div>
+      </div> 
+      <div class="row" ng-repeat="detail in invoice.invoiceDetails" >
+        <div class="col">{{detail.ProductId}}</div>
+        <div class="col">{{detail.ProductName}}</div>
+        <div class="col">{{detail.Multitude}} x {{detail.SmallerQuantity}}</div>
+        <div class="col">{{detail.Units | number:2}}</div>
+        <div class="col">{{detail.DefaultQuantity}}</div>
+        <div class="col">{{(detail.Units / detail.RatioToParent) | number:2}}</div>
+        <div class="col">{{detail.QuantityName}}</div>
+        <div class="col">{{detail.UnitPrice | number:2}}</div>
+        <div class="col">{{detail.Commision | number:2}}</div>
+        <div class="col">{{detail.DiscountRatio | number:2}}</div>
+        <div class="col">{{detail.Commision | number:2}}</div>
+      </div>      
+    </div>
+  </ion-content>
+</ion-view>

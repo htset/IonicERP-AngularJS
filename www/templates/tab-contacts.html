@@ -1,0 +1,19 @@
+<ion-view view-title="Companies">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="contact in contacts" type="item-text-wrap" href="#/tab/contacts/{{contact.Id}}">
+        <!--img ng-src="{{product.face}}"-->
+        <h2>{{contact.FirstName}} {{contact.LastName}} </h2>
+        <p>Id: {{contact.Id}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+      </ion-item>
+    </ion-list>
+
+		<ion-infinite-scroll
+			ng-if="moreContacts"
+			on-infinite="loadMore()"
+			distance="1%">
+		</ion-infinite-scroll>		
+  </ion-content>
+</ion-view>

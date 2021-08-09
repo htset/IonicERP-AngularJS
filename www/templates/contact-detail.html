@@ -1,0 +1,22 @@
+<ion-view view-title="{{contact.contact.FirstName}} {{contact.contact.LastName}}">
+  <ion-content class="padding">
+		<h2>{{contact.contact.FirstName}} {{contact.contact.LastName}}</h2>
+    <p>Active: {{(contact.contact.PersonActive==1)?'True':'False'}}</p>
+    <h3>Address Info</h3>
+    <p>Address: {{contact.defaultAddress.Street}}</p>
+    <p>Zip code: {{contact.defaultAddress.ZipCode}}</p>
+    <p>City: {{contact.defaultAddress.City}}</p>
+    <p>Region: {{contact.defaultAddress.Region}}</p>
+    <p>Country: {{contact.defaultAddress.Country}}</p>
+    <p>Phone 1: {{contact.defaultAddress.Phone1}}</p>
+    <p>Phone 2: {{contact.defaultAddress.Phone2}}</p>
+    <p>Mobile Phone 1: {{contact.defaultAddress.MobilePhone1}}</p>
+    <p>Mobile Phone 2: {{contact.defaultAddress.MobilePhone2}}</p>
+    <p>Fax 1: {{contact.defaultAddress.Fax1}}</p>
+    <p>Fax 2: {{contact.defaultAddress.Fax2}}</p>
+    <p>Email 1: {{contact.defaultAddress.Email1}}</p>
+    <p>Email 2: {{contact.defaultAddress.Email2}}</p>
+    <p>Website: {{contact.defaultAddress.Website}}</p>
+
+  </ion-content>
+</ion-view>

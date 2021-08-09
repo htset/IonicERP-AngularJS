@@ -1,0 +1,19 @@
+<ion-view view-title="Payments">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="invoice in invoices" type="item-text-wrap" href="#/tab/payments/{{invoice.Id}}">
+        <!--img ng-src="{{product.face}}"-->
+        <h2>{{invoice.SupplierName}} --> {{invoice.CustomerName}} </h2>
+        <h2>Date: {{formatDate(invoice.InvoiceDate)|date: 'dd/MM/yyyy'}}, Id: {{invoice.Id}}</h2>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+      </ion-item>
+    </ion-list>
+
+		<ion-infinite-scroll
+			ng-if="moreInvoices"
+			on-infinite="loadMore()"
+			distance="1%">
+		</ion-infinite-scroll>		
+  </ion-content>
+</ion-view>

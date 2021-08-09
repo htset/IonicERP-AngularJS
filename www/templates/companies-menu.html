@@ -1,0 +1,20 @@
+<ion-view view-title="Companies Menu">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-click="openModal('companyTypes')">
+        <h2>Company Type</h2>
+        <div ng-repeat="item in selectedCompanyTypes">{{item.name}} </div>
+      </ion-item>
+      <ion-item ng-click="openModal('countries')">
+        <h2>Country</h2>
+        <div ng-repeat="item in selectedCountries">{{item.name}} </div>
+      </ion-item>
+      <ion-item ng-click="openModal('active')">
+        <h2>Active</h2>
+        <div ng-repeat="item in selectedActive">{{item.name}} </div>
+      </ion-item>
+    </ion-list>
+    <button class="button button-full button-positive" ng-click="sendQuery()">Search</button>
+    <button class="button button-full button-stable" ng-click="clearAll()">Clear Selections</button>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,31 @@
+<ion-view view-title="Payments Menu">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-click="openModal('suppliers')">
+        <h2>Suppliers</h2>
+        <div ng-repeat="item in selectedSuppliers">{{item.name}} </div>
+      </ion-item>
+      <ion-item ng-click="openModal('customers')">
+        <h2>Customers</h2>
+        <div ng-repeat="item in selectedCustomers">{{item.name}} </div>
+      </ion-item>
+      <ion-item ng-click="openModal('transporters')">
+        <h2>Transporters</h2>
+        <div ng-repeat="item in selectedTransporters">{{item.name}} </div>
+      </ion-item>
+      <ion-item ng-click="openModal('states')">
+        <h2>State</h2>
+      </ion-item>
+      <ion-item ng-click="openDatePicker('start')">
+        <h2>Start date</h2>
+        <div>{{selectedStartDate|date:'dd-MM-yyyy'}} </div>
+      </ion-item>
+      <ion-item ng-click="openDatePicker('stop')">
+        <h2>End date</h2>
+        <div>{{selectedEndDate|date:'dd-MM-yyyy'}} </div>
+      </ion-item>
+    </ion-list>
+    <button class="button button-full button-positive" ng-click="sendQuery()">Search</button>
+    <button class="button button-full button-stable" ng-click="clearAll()">Clear Selections</button>
+  </ion-content>
+</ion-view>

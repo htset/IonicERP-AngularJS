@@ -1,0 +1,19 @@
+<ion-view view-title="Orders">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="order in orders" type="item-text-wrap" href="#/tab/orders/{{order.Id}}">
+        <!--img ng-src="{{product.face}}"-->
+        <h2>{{order.SupplierName}} --> {{order.CustomerName}} </h2>
+        <h2>Date: {{formatDate(order.OrderDate)|date: 'dd/MM/yyyy'}}, Id: {{order.Id}}</h2>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+      </ion-item>
+    </ion-list>
+
+		<ion-infinite-scroll
+			ng-if="moreOrders"
+			on-infinite="loadMore()"
+			distance="1%">
+		</ion-infinite-scroll>		
+  </ion-content>
+</ion-view>

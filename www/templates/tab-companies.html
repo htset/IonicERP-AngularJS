@@ -1,0 +1,20 @@
+<ion-view view-title="Companies">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="company in companies" type="item-text-wrap" href="#/tab/companies/{{company.Id}}">
+        <!--img ng-src="{{product.face}}"-->
+        <h2>{{company.BrandName}} </h2>
+        <h2>{{company.CompanyName}} </h2>
+        <p>Id: {{company.Id}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+      </ion-item>
+    </ion-list>
+
+		<ion-infinite-scroll
+			ng-if="moreCompanies"
+			on-infinite="loadMore()"
+			distance="1%">
+		</ion-infinite-scroll>		
+  </ion-content>
+</ion-view>

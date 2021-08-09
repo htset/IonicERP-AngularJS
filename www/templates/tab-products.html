@@ -1,0 +1,23 @@
+<ion-view view-title="Products">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="product in products" type="item-text-wrap" href="#/tab/products/{{product.Id}}">
+        <!--img ng-src="{{product.face}}"-->
+        <h2>{{product.ProductName}} ({{product.Multitude}}x{{product.SmallerQuantity}})</h2>
+        <!--p>Id: {{product.Id}}</p>
+				<p>Category: {{product.ProductCategoryName}}</p-->
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(product)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+
+		<ion-infinite-scroll
+			ng-if="moreProducts"
+			on-infinite="loadMore()"
+			distance="1%">
+		</ion-infinite-scroll>		
+  </ion-content>
+</ion-view>

@@ -1,0 +1,83 @@
+<ion-view view-title="{{product.ProductName}}">
+  <ion-content class="padding">
+		<h2>{{product.product.ProductName}} ({{product.product.Multitude}}x{{product.product.SmallerQuantity}})</h2>
+    <p>ID: {{product.product.Id}}</p>
+    <p>Supplier: {{product.supplier.BrandName}}</p>
+    <p>Active: {{(product.product.ProductActive == 1)?'true':'false'}}</p>
+    <p>Category: {{product.product.ProductCategoryName}}</p>
+    <p>Subcategory: {{product.product.ProductSubcategoryName}}</p>
+    <p>Default Packing Price: {{product.defaultPrice.Price}}</p>
+    <p>Default Packing Net Weight: {{product.product.Weight}}</p>
+    <p>Default Packing Gross Weight: {{product.product.GrossWeight}}</p>
+    <p>Default Quantity: {{product.defaultQuantity.QuantityName}}</p>
+    <p>Product Code: {{product.product.ProductCode}}</p>
+    <div>
+      <h3>Prices</h3>
+      <div class="row header">
+        <div class="col">Customer</div>
+        <div class="col">Price</div>
+        <div class="col">From</div>
+        <div class="col">Lower quantity</div>
+        <div class="col">Upper quantity</div>
+      </div> 
+      <div class="row" ng-repeat="price in product.prices" >
+        <div class="col">{{(price.CompanyId == 0)?'All Companies':price.BrandName}}</div>
+        <div class="col">{{price.Price | number:2}}</div>
+        <div class="col" ng-bind="formatDate(price.StartDate) |  date:'MM/dd/yyyy'"></div>
+        <div class="col">{{price.LowerLimitQuantity}}</div>
+        <div class="col">{{price.UpperLimitQuantity}}</div>
+      </div>      
+    </div>
+
+    <div>
+      <h3>Commissions</h3>
+      <div class="row header">
+        <div class="col">Customer</div>
+        <div class="col">Type</div>
+        <div class="col">Value</div>
+        <div class="col">From</div>
+        <div class="col">Lower quantity</div>
+        <div class="col">Upper quantity</div>
+      </div> 
+      <div class="row" ng-repeat="commission in product.commissions" >
+        <div class="col">{{(commission.CompanyId == 0)?'All Companies':commission.BrandName}}</div>
+        <div class="col">{{(commission.CommisionTypeId == 0)?'Factor':'Value'}}</div>
+        <div class="col">{{(commission.CommisionTypeId == 0)?(commission.Factor|number:2):(commission.Price|number:2)}}</div>
+        <div class="col" ng-bind="formatDate(commission.StartDate) |  date:'MM/dd/yyyy'"></div>
+        <div class="col">{{commission.LowerLimitQuantity}}</div>
+        <div class="col">{{commission.UpperLimitQuantity}}</div>
+      </div>      
+    </div>
+
+    <div>
+      <h3>Discounts</h3>
+      <div class="row header">
+        <div class="col">Customer</div>
+        <div class="col">Price</div>
+        <div class="col">From</div>
+        <div class="col">Lower quantity</div>
+        <div class="col">Upper quantity</div>
+      </div> 
+      <div class="row" ng-repeat="discount in product.discounts" >
+        <div class="col">{{(discount.CompanyId == 0)?'All Companies':discount.BrandName}}</div>
+        <div class="col">{{discount.Ratio | number:2}}</div>
+        <div class="col" ng-bind="formatDate(discount.StartDate) |  date:'MM/dd/yyyy'"></div>
+        <div class="col">{{discount.LowerLimitQuantity}}</div>
+        <div class="col">{{discount.UpperLimitQuantity}}</div>
+      </div>      
+    </div>
+
+    <div>
+      <h3>Quantities</h3>
+      <div class="row header">
+        <div class="col">Quantity Name</div>
+        <div class="col">Ratio To Parent</div>
+      </div> 
+      <div class="row" ng-repeat="quantity in product.quantities" >
+        <div class="col">{{quantity.QuantityName}}</div>
+        <div class="col">{{quantity.RatioToParent | number:2}}</div>
+      </div>      
+    </div>
+
+  </ion-content>
+</ion-view>
